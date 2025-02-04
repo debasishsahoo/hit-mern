@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const ctrl=require('../controller/controller')
 
-router.get("/view", (req, res) => {
-  res.status(200).send("this is View");
-});
-//router.post();
-///router.put();
-//router.delete();
+router.get("/view", ctrl.view);
+router.post("/add", ctrl.add);
+router.put("/update",ctrl.update);
+router.delete("/delete", ctrl.delete);
 module.exports = router;
