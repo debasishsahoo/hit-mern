@@ -36,7 +36,7 @@ const userCtrl = {
       if (!isMatch)
         return res.status(400).json({ message: "Invalid credentials" });
 
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      const token = jwt.sign({ id: user._id }, Secret, {
         expiresIn: "1h",
       });
       res.json({ token });
@@ -44,7 +44,28 @@ const userCtrl = {
       res.status(500).json({ error: e.message });
     }
   },
-  changePassword: async (req, res) => {},
-  getUser: async (req, res) => {},
+  changePassword: async (req, res) => {
+    const { oldPassword, newPassword } = req.body;
+    try {
+      const user = await User.findById(req.user.id);
+      const isMatch = await bcrypt.compare(oldPassword, user.password);
+      if (!isMatch) return res.status(400).json({ message: 'Old password is incorrect' });
+
+      user.password = await bcrypt.hash(newPassword, 10);
+      await user.save();
+      res.json({ message: 'Password updated' });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
+  getUser: async (req, res) => {
+    const user_id=req.user.id
+    try {
+      const users = await User.findById({_id:user_id}).select('-password');
+      if(users) return res.json(users);;
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
 };
 module.exports = userCtrl;
