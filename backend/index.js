@@ -2,6 +2,7 @@ const express = require("express");
 const connectDB=require('./config/db.mongo')
 const cors = require("cors")
 const productRouter=require('./routes/product.route')
+const userRouter=require('./routes/user.route')
 require('dotenv').config();
 const PORT = process.env.PORT;
 const HOST = process.env.HOST;
@@ -16,6 +17,7 @@ app.use('/api/check',(req,res)=>{
 })
 
 app.use('/api/product',productRouter)
+app.use('/api/user',userRouter)
 
 
 
