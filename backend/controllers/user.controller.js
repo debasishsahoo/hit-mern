@@ -46,27 +46,29 @@ const userCtrl = {
   },
   changePassword: async (req, res) => {
     const { oldPassword, newPassword } = req.body;
-    const id="67a5a538c932c9ff05cbe036";
     try {
-      const user = await userModel.findById({_id:id});
+      const user = await userModel.findById(req.user.id);
 
       const isMatch = await bcrypt.compare(oldPassword, user.password);
-      if (!isMatch) return res.status(400).json({ message: 'Old password is incorrect' });
+      if (!isMatch)
+        return res.status(400).json({ message: "Old password is incorrect" });
 
-      user.password = await bcrypt.hash(newPassword,Salt);
+      user.password = await bcrypt.hash(newPassword, Salt);
       await user.save();
-      res.status(200).json({ message: 'Password updated' });
+      res.status(200).json({ message: "Password updated" });
     } catch (e) {
       res.status(500).json({ error: e.message });
     }
   },
   getUser: async (req, res) => {
-    const user_id=req.user.id
+    const user_id = req.user.id;
     try {
-      const users = await User.findById({_id:user_id}).select('-password');
-      if(users) return res.json(users);;
-    } catch (err) {
-      res.status(500).json({ error: err.message });
+      const users = await userModel
+        .findById({ _id: user_id })
+        .select("-password");
+      if (users) return res.status(200).json(users);
+    } catch (e) {
+      res.status(500).json({ error: e.message });
     }
   },
 };
