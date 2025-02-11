@@ -6,6 +6,6 @@ Router.post('/signup',userCtrl.signUp);
 Router.post('/signin',userCtrl.signIn);
 
 Router.put('/changepassword',authorization,userCtrl.changePassword);
-Router.get('/user',authorization,userCtrl.getUser);
+Router.get('/getuser',authorization,userCtrl.getUser);
 
 module.exports=Router;
