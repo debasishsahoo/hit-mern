@@ -1,17 +1,29 @@
-import Header from './components/common/Header'
-import Footer from './components/common/Footer'
-import Service from './components/Service'
-import './App.css'
+import Header from "./components/common/Header";
+import Footer from "./components/common/Footer";
+import Service from "./components/Service";
+import Content from "./components/Content";
+import Stat from "./components/Stat";
+import RowMedium from "./components/RowMedium";
+import RowColumn from "./components/RowColumn";
+import "./App.css";
 
 function App() {
-  
   return (
-    <>
-      <Header/>
-      <Service/>
-      <Footer/>
-    </>
-  )
+    <div className="container">
+      <Header />
+      <Content />
+      <Service />
+      <Stat />
+      <hr />
+      <div className="row column">
+        <h3>Our Recent Work</h3>
+      </div>
+      <RowMedium />
+      <hr/>
+      <RowColumn />
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
