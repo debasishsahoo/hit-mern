@@ -5,6 +5,7 @@ import Content from "./components/Content";
 import Stat from "./components/Stat";
 import RowMedium from "./components/RowMedium";
 import RowColumn from "./components/RowColumn";
+import {servicesData} from './data/data'
 import "./App.css";
 
 function App() {
@@ -12,7 +13,9 @@ function App() {
     <div className="container">
       <Header />
       <Content />
+      <Service services={servicesData}/>
       <Service />
+      <Stat />
       <Stat />
       <hr />
       <div className="row column">

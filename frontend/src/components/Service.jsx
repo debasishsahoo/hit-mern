@@ -1,25 +1,16 @@
-import React from 'react'
+import React from "react";
 
-const Service = () => {
+const Service = ({services}) => {
   return (
     <div className="services">
-      <div className="service">
-        <h3>Photoshop</h3>
-        <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam
-          eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna.</p>
-      </div>
-      <div className="service">
-        <h3>Javascript</h3>
-        <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam
-          eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna.</p>
-      </div>
-      <div className="service">
-        <h3>Marketing</h3>
-        <p>Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam
-          eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna.</p>
-      </div>
+      {services.map((service, index) => (
+        <div className="service" key={index}>
+          <h3>{service.name}</h3>
+          <p>{service.desc}</p>
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Service
+export default Service;
