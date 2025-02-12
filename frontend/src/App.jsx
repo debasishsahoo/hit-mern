@@ -13,7 +13,7 @@ function App() {
     <div className="container">
       <Header />
       <Content />
-      <Service services={servicesData ||[] }/>
+      <Service services={servicesData}/>
       <Stat stats={statsData}/>
       <hr />
       <div className="row column">
