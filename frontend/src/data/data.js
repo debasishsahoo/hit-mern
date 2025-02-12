@@ -10,7 +10,7 @@ export const statsData = [
     { number: 43, label: "Apps" },
     { number: 95, label: "Ads" },
     { number: 59, label: "Cakes" },
-    { number: 18, label: "Logos" }
+    { number: 19, label: "Logos" }
   ];
   
   export const recentWorkData = [

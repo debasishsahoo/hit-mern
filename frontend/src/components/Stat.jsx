@@ -1,30 +1,16 @@
-import React from 'react'
+import React from "react";
 
-const Stat = () => {
+const Stat = ({ stats }) => {
   return (
     <div className="stats">
-      <div className="stat">
-        <div className="number">28</div>
-        <div className="label">Websites</div>
-      </div>
-      <div className="stat">
-        <div className="number">43</div>
-        <div className="label">Apps</div>
-      </div>
-      <div className="stat">
-        <div className="number">95</div>
-        <div className="label">Ads</div>
-      </div>
-      <div className="stat">
-        <div className="number">59</div>
-        <div className="label">Cakes</div>
-      </div>
-      <div className="stat">
-        <div className="number">18</div>
-        <div className="label">Logos</div>
-      </div>
+      {stats.map((stat, index) => (
+        <div key={index} className="stat">
+          <div className="number">{stat.number}</div>
+          <div className="label">{stat.label}</div>
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Stat
+export default Stat;
