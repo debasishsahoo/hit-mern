@@ -1,7 +1,8 @@
 import React from "react";
 
-const Service = ({services}) => {
+const Service = ({services=[]}) => {
   console.log('services:', services)
+
   if (!services?.length) {
     return <p>Loading services...</p>;
   }
