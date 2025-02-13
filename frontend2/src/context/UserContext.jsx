@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import setAuthToken from "../utils/setAuthToken";
 
 const UserContext = createContext();
 
@@ -9,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
+      setAuthToken(token);
       axios
         .get("http://localhost:5000/api/user/getuser")
         .then((res) => setUser(res.data))
@@ -26,10 +28,12 @@ export const AuthProvider = ({ children }) => {
       credentials
     );
     localStorage.setItem("token", res.data.token);
+    setAuthToken(res.data.token);
     setUser(res.data.user);
   };
   const logout = async () => {
     localStorage.removeItem("token");
+    setAuthToken(null);
     setUser(null);
   };
 
