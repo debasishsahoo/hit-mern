@@ -17,11 +17,9 @@ export const AuthProvider = ({ children }) => {
         .catch(() => setUser(null));
     }
   }, []);
-
   const registration = async (credentials) => {
     await axios.post("http://localhost:5000/api/user/signup", credentials);
   };
-
   const login = async (credentials) => {
     const res = await axios.post(
       "http://localhost:5000/api/user/signin",
@@ -36,9 +34,12 @@ export const AuthProvider = ({ children }) => {
     setAuthToken(null);
     setUser(null);
   };
+  const changepassword=async(credentials)=>{
+    await axios.post('http://localhost:5000/api/user/changepassword',credentials);
+  }
 
   return (
-    <UserContext.Provider value={{ user, registration, login, logout }}>
+    <UserContext.Provider value={{ user, registration, login, logout,changepassword }}>
       {children}
     </UserContext.Provider>
   );

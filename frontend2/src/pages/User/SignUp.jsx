@@ -22,11 +22,6 @@ const SignUp = () => {
     }
   };
 
-
-
-
-
-
   return (
     <div className="container">
       <div className="card p-4">
