@@ -10,6 +10,7 @@ import ProductList from './pages/Product/ProductList'
 import SingleProduct from './pages/Product/SingleProduct'
 import UpdateProduct from './pages/Product/UpdateProduct'
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
